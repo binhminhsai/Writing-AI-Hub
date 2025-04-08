@@ -1,0 +1,22 @@
+{
+  "samples": [
+    {
+      "topic": "Technology in Education",
+      "level": "Band 6.5",
+      "task": "IELTS Task 2",
+      "prompt": "Some people say that technology in education is a distraction, while others believe it offers new opportunities for learning. Discuss both views and give your own opinion.",
+      "outline": "## Introduction\n- General statement about technology in education\n- Thesis statement presenting both views\n\n## Body Paragraph 1\n- Technology as a distraction\n- Example: social media, games\n- Impact on concentration\n\n## Body Paragraph 2\n- Technology as an opportunity\n- Example: interactive learning, global access\n- Enhanced learning experience\n\n## Conclusion\n- Summary of points\n- Your opinion",
+      "vocabList": "- implement: to put a plan or system into effect\n- distraction: something that prevents someone from concentrating\n- engagement: the act of being involved in something\n- interactive: allowing continuous two-way transfer of information\n- facilitate: to make an action or process easier\n- integrate: to combine one thing with another to form a whole\n- innovative: using new methods or ideas\n- cognitive: related to the mental process of understanding\n- accessible: able to be reached or obtained easily\n- constraint: limitation or restriction",
+      "sentencePatterns": "- It is widely believed that...\n- On the one hand, ... On the other hand, ...\n- Proponents of this view argue that...\n- Critics, however, point out that...\n- Research has demonstrated that...\n- While it is true that..., it is also important to consider...\n- From my perspective, ...\n- In conclusion, I believe that..."
+    },
+    {
+      "topic": "Environmental Protection",
+      "level": "Band 7.0",
+      "task": "IELTS Task 2",
+      "prompt": "Some people think that environmental problems are too big for individuals to solve, while others believe that individuals cannot solve these problems without the support of governments. Discuss both views and give your opinion.",
+      "outline": "## Introduction\n- Introduce the topic of environmental issues\n- Present the contrasting views\n- Thesis statement\n\n## Body Paragraph 1\n- View 1: Problems too big for individuals\n- Examples: industrial pollution, deforestation\n- Supporting arguments\n\n## Body Paragraph 2\n- View 2: Need for government support\n- Examples: regulations, incentives\n- Supporting arguments\n\n## Body Paragraph 3\n- Your balanced view\n- Combined approach needed\n- Examples of effective collaboration\n\n## Conclusion\n- Summarize main points\n- Restate your opinion\n- Future outlook",
+      "vocabList": "- mitigation: the action of reducing the severity of something\n- sustainability: the ability to maintain at a certain level\n- legislation: laws or regulations made by a government\n- incentive: something that motivates or encourages someone to do something\n- initiative: an act or strategy intended to resolve a difficulty\n- compliance: the action of complying with a command\n- stakeholder: a person with an interest or concern in something\n- accountability: the fact of being responsible for your decisions or actions\n- collective: done by people acting as a group\n- paradigm shift: a fundamental change in approach or assumptions",
+      "sentencePatterns": "- There is a growing concern about...\n- It is often argued that...\n- Advocates of this viewpoint claim that...\n- Nevertheless, others contend that...\n- Evidence suggests that...\n- While individual efforts are commendable, they may not be sufficient without...\n- A balanced approach would involve...\n- To address this issue effectively, both individuals and governments must..."
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+✨ GIAO DIỆN UI TRƯỚC KHI NỘP BÀI – DỰA TRÊN PHONG CÁCH TỪ GIAO DIỆN UEH
+
+📌 Tên giao diện:
+
+WritingAI Hub
+
+Tổng thể phong cách thiết kế UI
+
+Giao diện của WritingAI Hub mang cảm hứng từ thiết kế hiện đại, tối giản nhưng học thuật của trang web UEH Sustainability, kết hợp với bố cục rõ ràng và màu sắc chuyên nghiệp. Tông màu chủ đạo là xanh lá đậm, cam sáng và trắng giúp giao diện vừa thân thiện, dễ nhìn, vừa mang tính định hướng học thuật.
+
+🎨 Màu sắc chủ đạo
+
+Nền tổng thể: Trắng (#FFFFFF)
+
+Thanh tiêu đề & navigation bar: Xanh lá UEH đậm (#006633)
+
+Nút chính (Primary button): Xanh lá (#006633) – chữ trắng
+
+Nút phụ hoặc hover: Viền đen, nền trắng – chữ xanh đậm
+
+Tiêu đề mục: Đen (#000000) – đậm
+
+Highlight/CTA phụ: Cam UEH (#F29C2B)
+
+Viền/outline: Xám nhạt (#E0E0E0)
+
+🔤 Font chữ sử dụng
+
+Font chính: Montserrat hoặc Roboto – hiện đại, rõ ràng, hỗ trợ tiếng Việt
+
+Kích thước font:
+
+Tiêu đề lớn: 24px – 32px
+
+Nội dung thường: 16px
+
+Mô tả phụ: 14px – xám nhạt
+
+I. Thanh tiêu đề (Header Navigation)
+
+Vị trí: Trên cùng màn hình
+
+Thiết kế:
+
+Logo “WritingAI Hub” màu trắng, đặt bên trái
+
+Nút chuyển theme Light/Dark (biểu tượng mặt trăng ☾/mặt trời ☀️)
+
+Màu nền: Xanh UEH
+
+Chữ trắng, đậm, căn trái
+
+II. Chọn loại bài viết & độ khó
+
+Thiết kế:
+
+2 dropdown menu:
+
+Loại bài viết: IELTS Task 1, Task 2, TOEFL Writing
+
+Độ khó: Pre - Band 4.5, Band 5.0, Band 5.5, Band 6.5, Band 7.0, Band 7.5, Band 8.0.
+
+Nút “Tạo đề ngẫu nhiên” – màu cam sáng, chữ trắng
+
+Ô "Nhập chủ đề" - màu trắng, viền đen tức là thanh tìm kiếm icon 🔍
+
+III. Hộp hiển thị đề bài & đồng hồ bắt đầu
+
+Hộp đề bài:
+
+Nền trắng, viền xám nhạt
+
+Placeholder: “Chủ đề sẽ hiển thị tại đây...”
+
+Hộp thời gian:
+
+Đồng hồ nhỏ, hiển thị giờ bắt đầu
+
+Màu chữ xám đậm (#555555), font monospaced cho rõ ràng
+
+IV. Vùng soạn thảo (Editor)
+
+Textarea lớn, nền trắng
+
+Viền xanh lá nhạt (#A5D6A7)
+
+Placeholder: “Bắt đầu viết tại đây…”
+
+Thanh công cụ định dạng:
+
+Biểu tượng đơn giản (B, I, U, List, Undo, Redo…)
+
+Style drop-down dạng thanh gọn, font “Style”
+
+Icon có viền xám, khi hover sẽ đổi viền cam
+
+V. Gợi ý dàn bài (Outline Panel)
+
+Dạng card trắng, viền xám
+
+Scrollable (cuộn dọc), có nút “Sao chép”
+
+Mỗi đề mục highlight bằng tiêu đề cam (UEH style)
+
+VI. Tabs Từ vựng – Câu mẫu
+
+Thiết kế tab dạng ngang:
+
+Khi chọn: Nền cam, chữ trắng
+
+Chưa chọn: Nền xám nhạt, chữ đen
+
+Bo góc nhẹ, padding đều
+
+Phân thành 2 bảng:
+
+Bảng từ vựng liên quan
+
+Bảng mẫu câu thường dùng
+
+VII. Giao diện Light/Dark Mode
+
+Chế độ Light: Như mô tả phía trên
+
+Chế độ Dark:
+
+Nền: #1E1E1E
+
+Chữ: Trắng (#FFFFFF) hoặc xám sáng
+
+Viền: Xám (#333333)
+
+Button: Cam nổi bật (#FFA726) – tương phản tốt với nền tối
+
+VIII. Nút “Bắt đầu làm bài”
+
+Vị trí: Bên phải cạnh hộp đề bài
+
+Màu nền: Xanh đậm UEH
+
+Chữ trắng, font đậm
+
+Icon Start 🔄, hover đổi màu cam

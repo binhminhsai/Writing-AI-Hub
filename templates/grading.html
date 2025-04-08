@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Writing AI-Hub - Grading</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .highlight-red { background-color: #fee2e2; text-decoration: underline red wavy; }
+    .highlight-yellow { background-color: #fef08a; text-decoration: underline orange wavy; }
+    .highlight-green { background-color: #d1fae5; text-decoration: underline green wavy; }
+    .dark { background-color: #1f2937; color: #f9fafb; }
+    .dark .bg-white { background-color: #374151; color: #f9fafb; }
+    .dark .text-gray-700, .dark .text-gray-600 { color: #d1d5db; }
+    .dark .text-gray-800 { color: #f3f4f6; }
+    .dark .border-gray-200 { border-color: #4b5563; }
+    .dark .bg-gray-100 { background-color: #4b5563; }
+    .dark .bg-gray-50 { background-color: #374151; }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Navigation Links -->
+  <div class="fixed top-3 right-4 flex space-x-4 z-50">
+    <a href="/" class="text-white hover:text-yellow-200 transition-colors">
+      <i class="fas fa-edit mr-1"></i> Writing
+    </a>
+    <a href="/grading" class="text-white hover:text-yellow-200 transition-colors font-bold border-b border-yellow-400">
+      <i class="fas fa-check-square mr-1"></i> Grading
+    </a>
+    <button id="themeToggle" class="text-white hover:text-yellow-200 transition-colors">
+      <i class="fas fa-moon"></i>
+    </button>
+  </div>
+
+  <header class="bg-green-800 text-white p-4 flex flex-col gap-1">
+    <h1 class="text-xl font-semibold">✏️ Writing AI-Hub</h1>
+    <p class="text-sm">AI-powered platform designed to enhance writing skills and generate quality content effortlessly</p>
+  </header>
+
+  <section class="grading-header bg-white p-6 mx-8 mt-6 mb-2 rounded shadow border-l-4 border-orange-400">
+    <h1 class="text-2xl font-bold text-green-800 flex items-center gap-3">
+      🤖 AI Grading and Treatment
+    </h1>
+    <p class="text-base text-gray-700 mt-2">See detailed feedback and scoring based on your writing</p>
+  </section>
+
+  <!-- Input Section -->
+  <section class="bg-white p-6 mx-8 mb-6 rounded shadow">
+    <div class="mb-4">
+      <label for="taskType" class="block text-sm font-medium text-gray-700 mb-1">Task Type</label>
+      <select id="taskType" class="w-full p-2 border border-gray-300 rounded">
+        <option value="IELTS Task 1">IELTS Writing Task 1</option>
+        <option value="IELTS Task 2" selected>IELTS Writing Task 2</option>
+        <option value="TOEFL Essay">TOEFL Independent Essay</option>
+      </select>
+    </div>
+    
+    <div class="mb-4">
+      <label for="difficultyLevel" class="block text-sm font-medium text-gray-700 mb-1">Difficulty Level</label>
+      <select id="difficultyLevel" class="w-full p-2 border border-gray-300 rounded">
+        <option value="Band 5.0">Band 5.0</option>
+        <option value="Band 5.5">Band 5.5</option>
+        <option value="Band 6.0">Band 6.0</option>
+        <option value="Band 6.5" selected>Band 6.5</option>
+        <option value="Band 7.0">Band 7.0</option>
+        <option value="Band 7.5">Band 7.5</option>
+        <option value="Band 8.0">Band 8.0</option>
+      </select>
+    </div>
+    
+    <div class="mb-4">
+      <label for="questionText" class="block text-sm font-medium text-gray-700 mb-1">Question/Prompt</label>
+      <div id="questionText" class="w-full p-4 border border-gray-300 rounded min-h-16 bg-gray-50">
+        Some people think students should study more academic subjects, while others think practical subjects are more important. Discuss both views and give your opinion.
+      </div>
+    </div>
+    
+    <div class="mb-4">
+      <label for="essayInput" class="block text-sm font-medium text-gray-700 mb-1">Your Essay</label>
+      <textarea id="essayInput" class="w-full p-4 border border-gray-300 rounded h-64"></textarea>
+    </div>
+    
+    <button id="submitEssayBtn" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+      <i class="fas fa-check-circle mr-2"></i> Submit for Grading
+    </button>
+  </section>
+
+  <!-- Prompt Info -->
+  <section id="promptInfo" class="bg-white border border-orange-300 shadow px-6 py-5 rounded-lg mx-8 mb-6 hidden">
+    <p class="text-xl font-semibold text-gray-800 mb-2">
+      <strong>Question:</strong> <span id="questionDisplay"></span>
+    </p>
+    <div class="text-base text-gray-700">
+      <strong>Band:</strong> <span id="bandLevel">6.5</span> &nbsp;&nbsp;&nbsp; 
+      <strong>Estimated Time:</strong> <span id="estimatedTime">Not tracked</span>
+    </div>
+  </section>
+
+  <!-- User Writing with Highlights -->
+  <section id="userWritingSection" class="mx-8 mb-6 hidden">
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-800 mb-4">Your Writing (with highlights)</h2>
+      <div id="userWritingContent" class="prose max-w-none">
+        <!-- Content will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Feedback -->
+  <section id="aiFeedbackContent" class="mx-8 mb-6 hidden">
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-800 mb-4">AI Feedback</h2>
+
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-green-700 mb-2">Grammatical Range and Accuracy</h3>
+        <div id="grammarFeedback" class="pl-4 border-l-4 border-red-300">
+          <!-- Feedback will be inserted here by JavaScript -->
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-green-700 mb-2">Lexical Resource</h3>
+        <div id="lexicalFeedback" class="pl-4 border-l-4 border-yellow-300">
+          <!-- Feedback will be inserted here by JavaScript -->
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-green-700 mb-2">Task Response</h3>
+        <div id="taskFeedback" class="pl-4 border-l-4 border-blue-300">
+          <!-- Feedback will be inserted here by JavaScript -->
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-green-700 mb-2">Coherence and Cohesion</h3>
+        <div id="coherenceFeedback" class="pl-4 border-l-4 border-purple-300">
+          <!-- Feedback will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scores Box -->
+  <section id="scoreBox" class="mx-8 mb-6 hidden">
+    <div class="bg-yellow-100 p-4 text-center w-full rounded shadow border-t-2 border-yellow-400 mb-4">
+      <h3 class="text-xl font-bold text-yellow-800">✨ Overall Band Score: <span id="overallScore">0.0</span></h3>
+    </div>
+    
+    <div class="grid grid-cols-4 gap-4 w-full">
+      <div class="bg-white p-4 text-center rounded shadow border-l-4 border-red-400">
+        <h4 class="font-semibold text-gray-700">Grammar</h4>
+        <p class="text-xl font-bold text-gray-800"><span id="grammarScore">0.0</span></p>
+      </div>
+      
+      <div class="bg-white p-4 text-center rounded shadow border-l-4 border-yellow-400">
+        <h4 class="font-semibold text-gray-700">Lexical</h4>
+        <p class="text-xl font-bold text-gray-800"><span id="lexicalScore">0.0</span></p>
+      </div>
+      
+      <div class="bg-white p-4 text-center rounded shadow border-l-4 border-blue-400">
+        <h4 class="font-semibold text-gray-700">Task</h4>
+        <p class="text-xl font-bold text-gray-800"><span id="taskScore">0.0</span></p>
+      </div>
+      
+      <div class="bg-white p-4 text-center rounded shadow border-l-4 border-purple-400">
+        <h4 class="font-semibold text-gray-700">Coherence</h4>
+        <p class="text-xl font-bold text-gray-800"><span id="coherenceScore">0.0</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Improvement Suggestions -->
+  <section id="improvementSuggestions" class="mx-8 mb-6 hidden">
+    <div class="bg-white p-6 rounded shadow">
+      <h2 class="text-xl font-bold text-green-800 mb-4">Improvement Suggestions</h2>
+      
+      <div class="tabs flex border-b border-gray-200 mb-4">
+        <button class="flex-1 py-2 px-4 font-medium text-center bg-green-100 rounded-t-lg border-t border-l border-r border-gray-200 active" 
+                onclick="switchTab('vocabTab', 'vocabContent', 'templateContent')">
+          🎯 Suggested Vocabulary
+        </button>
+        <button class="flex-1 py-2 px-4 font-medium text-center bg-orange-100 rounded-t-lg border-t border-l border-r border-gray-200"
+                onclick="switchTab('templateTab', 'templateContent', 'vocabContent')">
+          🧩 Sentence Templates
+        </button>
+      </div>
+      
+      <div id="vocabContent" class="p-4 bg-green-50 rounded-b-lg min-h-32">
+        <ul id="vocabSuggestions" class="list-disc pl-6 space-y-2">
+          <!-- Suggestions will be inserted here by JavaScript -->
+        </ul>
+      </div>
+      
+      <div id="templateContent" class="p-4 bg-orange-50 rounded-b-lg min-h-64 max-h-full overflow-y-auto hidden">
+        <div id="templateSuggestions" class="space-y-3">
+          <!-- Templates will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Return to Writing Button -->
+  <div class="text-center mb-12">
+    <a href="/" class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-800 transition-colors">
+      <i class="fas fa-arrow-left mr-2"></i> Return to Writing
+    </a>
+  </div>
+
+  <!-- Loading Indicator -->
+  <div id="gradingLoading" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-6 rounded-xl shadow-xl flex flex-col items-center max-w-md w-full">
+      <div class="flex items-center justify-center mb-4">
+        <div class="animate-spin text-4xl mr-2">⚙️</div>
+        <div class="animate-bounce text-4xl mx-1">🧠</div>
+        <div class="animate-pulse text-4xl ml-2">✨</div>
+      </div>
+      <h3 class="text-xl font-bold mb-3">AI đang chấm bài...</h3>
+      <div id="loadingMessages" class="text-center mb-4 font-medium text-gray-600 h-12 overflow-hidden">
+        <p class="loadingMessage">Đang phân tích lỗi ngữ pháp và từ vựng...</p>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6 overflow-hidden">
+        <div id="loadingProgressBar" class="bg-gradient-to-r from-green-500 to-orange-500 h-2.5 rounded-full shimmer-bg" style="width: 30%"></div>
+      </div>
+      <div class="text-sm text-gray-500 italic">
+        <span class="font-semibold">Fact:</span> IELTS đánh giá bài viết theo 4 tiêu chí khác nhau!
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Message -->
+  <div id="successToast" class="fixed bottom-5 right-5 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded shadow-md hidden">
+    <div class="flex items-center">
+      <div class="text-green-500 rounded-full bg-white p-1 mr-3">
+        <i class="fas fa-check"></i>
+      </div>
+      <p id="toastMessage">Bài viết đã được chấm thành công!</p>
+      <button class="ml-auto" onclick="document.getElementById('successToast').classList.add('hidden')">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Simple tab switching functionality
+    function switchTab(tabId, showContentId, hideContentId) {
+      // Update tab buttons
+      document.querySelectorAll('.tabs button').forEach(btn => {
+        btn.classList.remove('active', 'bg-green-600', 'text-white');
+        btn.classList.add('bg-gray-100');
+      });
+      document.querySelector(`button[onclick*="${tabId}"]`).classList.add('active', 'bg-green-600', 'text-white');
+      
+      // Show/hide content
+      document.getElementById(showContentId).classList.remove('hidden');
+      document.getElementById(hideContentId).classList.add('hidden');
+    }
+  </script>
+  
+  <script src="{{ url_for('static', filename='js/loading-animation.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/grading.js') }}"></script>
+</body>
+</html>

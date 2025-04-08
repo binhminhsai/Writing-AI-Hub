@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Writing AI-Hub - Grading</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f9fafb; }
+    header { background-color: #006633; color: white; padding: 1rem; }
+    .prompt-info { background: #fff; padding: 1rem; margin: 1rem; border-left: 4px solid #F29C2B; }
+    .grading-main { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 1rem; }
+    .user-writing, .ai-feedback { background: #fff; padding: 1rem; border-radius: 0.375rem; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+    .ai-feedback h3 { color: #006633; margin-top: 1rem; }
+    .highlight-red { background-color: #fee2e2; text-decoration: underline red wavy; }
+    .highlight-yellow { background-color: #fef08a; text-decoration: underline orange wavy; }
+    .feedback-section { margin-bottom: 1.5rem; }
+    .score-box { display: flex; gap: 1rem; flex-wrap: wrap; background: #fff; padding: 1rem; margin: 1rem; border-top: 2px solid #ccc; }
+    .score-box div { flex: 1 1 200px; background: #fefce8; padding: 0.75rem; border-left: 4px solid #006633; }
+    .tabs { display: flex; border-bottom: 1px solid #ccc; margin: 1rem; }
+    .tab { flex: 1; padding: 0.5rem; cursor: pointer; text-align: center; }
+    .tab.active { background-color: #F29C2B; color: white; font-weight: bold; }
+    .tab-content { padding: 1rem; display: none; background: #fff; margin: 0 1rem 1rem; border-radius: 0.375rem; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <header class="bg-green-800 text-white p-4 flex flex-col gap-1">
+  <h1 class="text-xl font-semibold">✏️ Writing AI-Hub</h1>
+  <p class="text-sm">AI-powered platform designed to enhance writing skills and generate quality content effortlessly</p>
+</header>
+
+<section class="grading-header bg-white p-6 mx-4 mt-6 mb-2 rounded shadow border-l-4 border-orange-400">
+  <h1 class="text-2xl font-bold text-green-800 flex items-center gap-3">
+    🤖 AI Grading and Treatment
+  </h1>
+  <p class="text-base text-gray-700 mt-2">See detailed feedback and scoring based on your writing</p>
+</section>
+
+  <section class="prompt-info text-lg leading-relaxed bg-white border border-orange-300 shadow-md px-6 py-5 rounded-lg mx-4 mb-6">
+  <p class="text-xl font-semibold text-gray-800 mb-2">
+    <strong>Question:</strong> Some people think students should study more academic subjects...
+  </p>
+  <div class="text-base text-gray-700">
+    <strong>Band:</strong> 6.5 &nbsp;&nbsp;&nbsp; <strong>Estimated Time:</strong> 40 mins
+  </div>
+</section>
+
+  <section class="grading-main">
+    <div class="user-writing">
+      <h2>Your Writing (with highlights)</h2>
+      <p>
+        It is <span class="highlight-red">necessery</span> <span class="highlight-yellow">for young people to</span> choose the right career...
+      </p>
+      <p>They must <span class="highlight-red">concentrait</span> in study rather than...</p>
+    </div>
+
+    <div class="ai-feedback">
+      <h2>AI Feedback</h2>
+
+      <div class="feedback-section">
+        <h3>Grammatical Range and Accuracy</h3>
+        <p><strong>Error:</strong> necessery → <em>necessary</em> (Spelling mistake)</p>
+        <p><strong>Error:</strong> concentrait → <em>concentrate</em> (Spelling + grammar)</p>
+      </div>
+
+      <div class="feedback-section">
+        <h3>Lexical Resource</h3>
+        <p>Consider replacing "right career" with "appropriate professional path".</p>
+      </div>
+
+      <div class="feedback-section">
+        <h3>Task Response</h3>
+        <p>The essay addresses the task partially but lacks in-depth analysis and concrete examples.</p>
+      </div>
+
+      <div class="feedback-section">
+        <h3>Coherence and Cohesion</h3>
+        <p>Use more linking phrases: <em>Moreover, Consequently, In addition...</em></p>
+      </div>
+    </div>
+  </section>
+
+  
+<section class="score-box">
+  <div style="flex: 1 1 100%; background: #fff3cd; padding: 1rem; text-align: center; font-size: 1.25rem; font-weight: bold; color: #92400e; border-top: 2px solid #f59e0b;">
+    ✨ Overall Band Score: 6.0
+  </div>
+  <div> <strong>Grammar</strong><br/>6.0 </div>
+  <div> <strong>Lexical Resource</strong><br/>6.5 </div>
+  <div> <strong>Task Response</strong><br/>6.0 </div>
+  <div> <strong>Coherence</strong><br/>6.0 </div>
+</section>
+
+  <section>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('vocab')">🎯 Suggested Vocabulary</div>
+      <div class="tab" onclick="switchTab('templates')">🧩 Sentence Templates</div>
+    </div>
+    <div id="vocab" class="tab-content active">
+      <ul>
+        <li>pursue → embark on</li>
+        <li>job → occupation / profession</li>
+      </ul>
+    </div>
+    <div id="templates" class="tab-content">
+      <p>"One possible explanation is that..."</p>
+      <p>"This can be attributed to..."</p>
+    </div>
+  </section>
+
+  <script>
+    function switchTab(id) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelector(`.tab[onclick*="${id}"]`).classList.add('active');
+    }
+  </script>
+</body>
+</html>
