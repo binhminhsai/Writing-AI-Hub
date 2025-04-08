@@ -1,15 +1,19 @@
 import os
+from dotenv import load_dotenv
 import logging
 from flask import Flask, render_template, request, jsonify
 from services.openai_helper import generate_writing_resources, generate_random_topic
 from services.openai_grading import grade_essay
+
+# Load environment variables
+load_dotenv()
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
 # Create Flask app
 app = Flask(__name__)
-app.secret_key = os.environ.get("SESSION_SECRET", "writingai-hub-secret-key")
+app.secret_key = os.getenv("SESSION_SECRET")
 
 @app.route('/')
 def index():
